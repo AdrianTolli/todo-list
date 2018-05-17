@@ -1,0 +1,14 @@
+html {
+    background: lightblue;
+  }
+
+li{
+  width: fit-content;
+}
+li:hover{
+  background-color: rgba(0, 110, 255, 0.5);
+}
+
+.taskDone{
+  text-decoration: line-through;
+}
