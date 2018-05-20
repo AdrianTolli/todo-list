@@ -1,55 +1,43 @@
-
-
 var app = (function() {
   
-    function init() {
+  var list;
+  var input;
 
-      var list = document.getElementById("todoList");
-      var todoArray = [];
-      var myBtn = document.getElementById("addItemBtn");
-      var input = document.getElementById("newListItem");
+  function init() {
 
-      input.addEventListener('keyup', function (e) {
-        e.preventDefault();
-        if (e.keyCode == 13){
-          myBtn.click();
-        }
-      });
+    list = document.getElementById("todoList");
+    input = document.getElementById("newListItem");
 
-      myBtn.addEventListener("click", addItem);
+    bind();
+  }
 
-      function addItem(){
-        todoArray.push(input.value);
+  function addItem(){
+    list.innerHTML = list.innerHTML + "<li>" + input.value + "</li>";
 
-        var todoListHTML = "";
-        for(var i=0; i<todoArray.length; i++){
-          todoListHTML += "<li>" + todoArray[i] + "</li>";
-        }
-        list.innerHTML = todoListHTML;
+    input.value="";
+  }
 
-        input.value="";
+  function bind(){
+
+    input.addEventListener('keyup', function (e) {
+      e.preventDefault();
+      if (e.keyCode == 13){
+        addItem();
       }
+    });
 
-
-      list.addEventListener("click", function(e){
-        if(e.target.tagName === 'LI'){
-            e.target.setAttribute("class", "taskDone");
-          }
-      });
-
-      render();
-      bind();
-    }
-
-    function render() {
-      document.getElementById("todoList") = list;
-    }
-    
-    return {
-      init: init,
-    }
-  })();
+    list.addEventListener("click", function(e){
+      if(e.target.tagName === 'LI'){
+          e.target.setAttribute("class", "taskDone");
+        }
+    });
+  }
   
-  document.addEventListener('DOMContentLoaded', function() {
-    app.init();
-  });
+  return {
+    init: init,
+  }
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+  app.init();
+});

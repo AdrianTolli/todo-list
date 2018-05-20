@@ -1,14 +1,35 @@
-html {
-    background: lightblue;
-  }
+html, body{
+  background: lightblue;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+input{
+  height: 45px;
+  width: 450px;
+}
+
+ul{
+  text-align: left;
+  margin: auto;
+  width: 450px;
+  min-height: 45px;
+  background: white;
+  padding: 0;
+  line-height: 45px;
+  list-style: none;
+
+}
 
 li{
-  width: fit-content;
+  opacity: 1;
 }
+
 li:hover{
   background-color: rgba(0, 110, 255, 0.5);
 }
 
-.taskDone{
-  text-decoration: line-through;
+li.taskDone{
+  opacity: 0.3;
+  transition: 0.5s all ease-in;
 }
